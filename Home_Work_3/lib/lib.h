@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 // Функция для вывода матрицы
-void print_array(int n, int m, int array[n][m]);
+void change_3_bits(unsigned char *ptr, int substitute);
 
 // Функция для переворота массива
 void swap_array(int n, int array[n]);
