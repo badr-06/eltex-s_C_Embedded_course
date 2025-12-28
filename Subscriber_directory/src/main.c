@@ -14,9 +14,6 @@ int main() {
     );
 
     struct abonent array[MAX_LEN] = {0};
-    // strncpy(array[0].name, "Ivanoivan", 9);
-    // strncpy(array[0].second_name, "Ivanov", 9);
-    // strncpy(array[0].tel, "8978", 9);
 
     bool start = true;
     

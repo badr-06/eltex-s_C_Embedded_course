@@ -13,7 +13,6 @@ void init_test_array(struct abonent* array) {
 
 // Тест 1: Базовая вставка и вывод
 START_TEST(test_basic_insert_print) {
-    printf("\n=== Тест 1: Базовая вставка ===\n");
     
     init_test_array(test_array);
     
@@ -31,7 +30,6 @@ END_TEST
 
 // Тест 2: Поиск абонента
 START_TEST(test_search) {
-    printf("\n=== Тест 2: Поиск абонента ===\n");
     
     init_test_array(test_array);
     
@@ -53,7 +51,6 @@ END_TEST
 
 // Тест 3: Удаление одного абонента
 START_TEST(test_single_delete) {
-    printf("\n=== Тест 3: Удаление одного абонента ===\n");
     
     init_test_array(test_array);
     
@@ -78,7 +75,6 @@ END_TEST
 
 // Тест 4: Удаление всех с определенным именем
 START_TEST(test_delete_all_by_name) {
-    printf("\n=== Тест 4: Удаление всех 'Anton' ===\n");
     
     init_test_array(test_array);
     
@@ -108,7 +104,6 @@ END_TEST
 
 // Тест 5: Граничные случаи
 START_TEST(test_edge_cases_compact) {
-    printf("\n=== Тест 5: Граничные случаи ===\n");
     
     init_test_array(test_array);
     
@@ -130,7 +125,6 @@ END_TEST
 
 // Тест 6: Проверка find_free_index
 START_TEST(test_find_free_index) {
-    printf("\n=== Тест 6: Поиск свободного индекса ===\n");
     
     init_test_array(test_array);
     
@@ -142,7 +136,7 @@ START_TEST(test_find_free_index) {
     insert(&test_array[1], "Test2", "User2", "456");
     ck_assert_int_eq(2, find_free_index(test_array));
 }
-// END_TEST
+END_TEST
 
 Suite *example_suite_create(void) {
   Suite *suite = suite_create("Test_Home_Work_2");
@@ -165,12 +159,10 @@ int main(void) {
   SRunner *suite_runner = srunner_create(suite);
 
   srunner_run_all(suite_runner, CK_NORMAL);
-  // Получаем количество проваленных тестов.
   unsigned failed_count = srunner_ntests_failed(suite_runner);
   srunner_free(suite_runner);
 
   if (failed_count != 0) {
-    // Сигнализируем о том, что тестирование прошло неудачно.
     return EXIT_FAILURE;
   }
 

@@ -3,29 +3,25 @@ CFLAGS = -Wall -Wextra -Werror
 TEST_FLAGS = -lcheck -lsubunit -lrt -lpthread -lm
 BUILD_DIR = build
 
+all: main1 main2 main3 main4
+
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-main1: $(BUILD_DIR)/main1.o
-	$(CC) $< -o main1
+main1: src/main1.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
-main2: $(BUILD_DIR)/main2.o
-	$(CC) $< -o main2
+main2: src/main2.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
-main3: $(BUILD_DIR)/main3.o
-	$(CC) $< -o main3
+main3: src/main3.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
-main4: $(BUILD_DIR)/main4.o
-	$(CC) $< -o main4
+main4: src/main4.c lib/lib.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
-$(BUILD_DIR)/%.o: src/*.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-test: tests/test.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) src/*.c -c && mv *.o $(BUILD_DIR)/.
-	$(CC) $(CFLAGS) build/*.o tests/test.c -o test $(TEST_FLAGS)
-
-all: main1 main2 main3 main4
+test: lib/lib.c tests/test.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) $^ -o $@ $(TEST_FLAGS)
 
 clean:
 	rm -rf $(BUILD_DIR) main1 main2 main3 main4 test

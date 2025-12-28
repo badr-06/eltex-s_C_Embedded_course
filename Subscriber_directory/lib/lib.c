@@ -2,7 +2,6 @@
 #include "lib.h"
 
 
-
 int insert_abonent(struct abonent* array){
 
     if(array == NULL){

@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include "../lib/lib.h"
-
 int main() {
   int x;
   scanf("%d", &x);
