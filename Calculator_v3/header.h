@@ -4,13 +4,13 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <dlfcn.h>
-#include <stdlib.h>
+#include <malloc.h>
 #include <string.h>
 
 typedef struct {
   void* lib_so;
-  char name[255];
   int (*func)(int, int);
+  char name[256];
 } lib_func;
 
 typedef struct {

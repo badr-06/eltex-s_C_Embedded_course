@@ -206,3 +206,4 @@ list_node *delete_node(list_node *current_node, list_node **array_node) {
 
   return current_node;
 }
+
