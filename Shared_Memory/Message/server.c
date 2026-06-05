@@ -116,7 +116,7 @@ void read_queue(struct message* local_msg, struct message* shared_msg, struct in
   }
 }
 
-void write_queue(struct message* local_msg, struct message* shared_msg, struct infoClients* infCl,
+void write_queue(struct message* local_msg, struct message* shared_msg,
                  struct storeMessage* storeMsg) {
     
   for(int i = 0; i < *shared_sizeInfcl; ++i){
@@ -219,7 +219,7 @@ int main() {
   while (1) {
     struct message local_msg = {0};
     read_queue(&local_msg, shared_msg_read, infCl, &storeMsg);
-    write_queue(&local_msg, shared_msg_write, infCl, &storeMsg);
+    write_queue(&local_msg, shared_msg_write, &storeMsg);
   }
 
   deleteStoreMessage(&storeMsg);
