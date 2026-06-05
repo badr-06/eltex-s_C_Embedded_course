@@ -132,7 +132,7 @@ void write_queue(struct message* local_msg, struct message* shared_msg,
     for(int i = 0; i < *shared_sizeInfcl; ++i){
       sem_post(sem_client);
     }
-    sleep(1);    
+    sleep(1);
     if (storeMsg->size > 0) {
       
       local_msg->categoriy_message = LOADING_MESSAGE;
@@ -146,15 +146,16 @@ void write_queue(struct message* local_msg, struct message* shared_msg,
         sem_wait(mutex2);
         printf("%s\n", storeMsg->message[i]);
         strncpy(local_msg->mtext, storeMsg->message[i],
-                strlen(local_msg->mtext) - 1);
+                strlen(storeMsg->message[i]) + 1);
         
+        printf("%s\n", local_msg->mtext);
         *shared_msg = *local_msg;
         sem_post(mutex2);
 
         for(int i = 0; i < *shared_sizeInfcl; ++i){
           sem_post(sem_client);
         }
-        sleep(2);
+        sleep(1);
       }
     }
   } else if (local_msg->categoriy_message == MESSAGE_FROM_CLIENT) {
