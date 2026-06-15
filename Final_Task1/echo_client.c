@@ -61,7 +61,6 @@ int func_read() {
   }
 
   char *data = buffer + ip->ihl * 4 + sizeof(struct udphdr);
-  int data_len = ntohs(udp_recv->len) - sizeof(struct udphdr);
 
   printf("server: %s\n", data);
 
@@ -97,7 +96,7 @@ int main(int argc, char *argv[]) {
 
     int max_fd = sock > STDIN_FILENO ? sock : STDIN_FILENO;
 
-    int ready = select(max_fd + 1, &readfds, NULL, NULL, NULL);
+    select(max_fd + 1, &readfds, NULL, NULL, NULL);
 
     if (FD_ISSET(STDIN_FILENO, &readfds)) {
       if (func_send(&server) == 1) break;

@@ -67,13 +67,6 @@ int main() {
     perror("setsockopt()");
   }
 
-  struct sockaddr_in addres;
-  socklen_t addrlen = sizeof(addres);
-
-  addres.sin_family = AF_INET;
-  addres.sin_port = htons(port);
-  addres.sin_addr.s_addr = INADDR_LOOPBACK;
-
   while (1) {
     ssize_t len;
     len = recvfrom(sock, buffer, sizeof(buffer), 0, NULL, NULL);
