@@ -29,7 +29,7 @@ int main(){
 
     char buffer[100];
     memset(buffer, 0, 100);
-    int size = recv(client_fd, buffer, 99, 0);
+    recv(client_fd, buffer, 99, 0);
 
     printf("%s\n", buffer);
     memset(buffer, 0, strlen(buffer));

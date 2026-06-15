@@ -23,7 +23,7 @@ int main(){
 
     char buffer[100];
     memset(buffer, 0, 100);
-    int size = recvfrom(server_fd, buffer, 99, 0, (struct sockaddr*)&address2, &addrlen);
+    recvfrom(server_fd, buffer, 99, 0, (struct sockaddr*)&address2, &addrlen);
 
     printf("%s\n", buffer);
     strcpy(buffer, "Hi! from server");

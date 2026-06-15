@@ -76,7 +76,7 @@ int main(){
 
         int max_fd = tcp_fd > udp_fd ? tcp_fd : udp_fd;
 
-        int ready = select(max_fd + 1, &readfds, NULL, NULL, NULL);
+        select(max_fd + 1, &readfds, NULL, NULL, NULL);
 
         if(FD_ISSET(tcp_fd, &readfds)){
             struct sockaddr_in client_addr;
@@ -93,7 +93,6 @@ int main(){
 
         if(FD_ISSET(udp_fd, &readfds)){
             struct sockaddr_in client_addr;
-            socklen_t client_addrlen = sizeof(client_addr);
 
             char buffer[256];
             memset(buffer, 0, 256);

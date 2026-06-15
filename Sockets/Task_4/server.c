@@ -7,7 +7,7 @@
 
 int main(){
 
-    int server_fd, client_fd;
+    int server_fd;
     struct sockaddr_in address, client_addr;
     socklen_t addrlen = sizeof(address);
     int port = 1234;

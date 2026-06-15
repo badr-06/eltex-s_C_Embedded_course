@@ -28,7 +28,7 @@ int main(){
     send(client_fd, buffer, strlen(buffer), 0);
 
     memset(buffer, 0, strlen(buffer));
-    int size = recv(client_fd, buffer, 99, 0);
+    recv(client_fd, buffer, 99, 0);
 
     printf("%s\n", buffer);
 

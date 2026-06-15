@@ -7,7 +7,7 @@
 
 int main(){
 
-    int server_fd, client_fd;
+    int server_fd;
     struct sockaddr_in address, client_addr;
     socklen_t addrlen = sizeof(address);
     int port = 1234;
@@ -25,7 +25,7 @@ int main(){
 
     char buffer[100];
     memset(buffer, 0, 100);
-    int size = recvfrom(server_fd, buffer, 99, 0, (struct sockaddr*)&client_addr, &addrlen);
+    recvfrom(server_fd, buffer, 99, 0, (struct sockaddr*)&client_addr, &addrlen);
 
     printf("%s\n", buffer);
     strcpy(buffer, "Hi! from server");

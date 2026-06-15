@@ -59,11 +59,8 @@ int dequeue()
 }
 
 
-void* serve_clients(void *arg)
+void* serve_clients(void *)
 {
-    int index = *(int*)arg;
-    free((int*)arg);
-
     while(1){
     pthread_mutex_lock(&mutex);
     while (count == 0)
@@ -120,10 +117,7 @@ int main(){
     }
 
     for(int i = 0; i < 10; ++i){
-        int *idx = calloc(1, sizeof(int));
-        *idx = i;
-
-        if(pthread_create(&thread[i], NULL, serve_clients, (void*)idx) != 0){
+        if(pthread_create(&thread[i], NULL, serve_clients, NULL) != 0){
             fprintf(stderr, "pthread[%d]", i);
             continue;
         }

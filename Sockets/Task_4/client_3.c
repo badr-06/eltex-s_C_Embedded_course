@@ -37,7 +37,6 @@ int main() {
     struct sockaddr_ll address;
     socklen_t addrlen = sizeof(address);
     int port = 1234;
-    int opt = 1;
 
     client_fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
     if (client_fd == -1) {

@@ -11,8 +11,6 @@ int main(){
     int server_fd, client_fd;
     struct sockaddr_un address;
     socklen_t addrlen = sizeof(address);
-    int port = 1234;
-    int opt = 1;
 
     server_fd = socket(AF_LOCAL, SOCK_STREAM, 0);
     if(server_fd == -1){
@@ -37,7 +35,7 @@ int main(){
 
     char buffer[100];
     memset(buffer, 0, 100);
-    int size = read(client_fd, buffer, 99);
+    read(client_fd, buffer, 99);
 
     printf("%s\n", buffer);
     memset(buffer, 0, strlen(buffer));
